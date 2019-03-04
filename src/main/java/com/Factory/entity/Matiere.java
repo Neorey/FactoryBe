@@ -1,8 +1,11 @@
 package com.Factory.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
 
@@ -10,7 +13,8 @@ import javax.persistence.Version;
 public class Matiere {
 
 	@ManyToMany
-	private Formateur formateur;
+	@JoinTable( name="MATIERE_TITRE")
+	private List<Formateur> listeFormateur;
 	
 	private String titre;
 	private int duree;
@@ -28,12 +32,27 @@ public class Matiere {
 	public Matiere() {
 	}
 
-	public Formateur getFormateur() {
-		return formateur;
+	public Matiere(List<Formateur> listeFormateur, String titre, int duree, String objectifs, String prerequis,
+			String contenu, Eniveau niveau) {
+		super();
+		this.listeFormateur = listeFormateur;
+		this.titre = titre;
+		this.duree = duree;
+		this.objectifs = objectifs;
+		this.prerequis = prerequis;
+		this.contenu = contenu;
+		this.niveau = niveau;
 	}
 
-	public void setFormateur(Formateur formateur) {
-		this.formateur = formateur;
+
+	
+
+	public List<Formateur> getListeFormateur() {
+		return listeFormateur;
+	}
+
+	public void setListeFormateur(List<Formateur> listeFormateur) {
+		this.listeFormateur = listeFormateur;
 	}
 
 	public String getTitre() {
