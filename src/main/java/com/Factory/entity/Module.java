@@ -31,6 +31,9 @@ public class Module {
 
 	private Date dateDebut;
 	private Date dateFin;
+	
+	@ManyToOne
+	private Formation formation;
 
 	@ManyToOne
 	@JoinColumn(name = "gestionnaire")

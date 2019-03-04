@@ -1,5 +1,5 @@
 package com.Factory.entity;
 
-public enum Eniveau {
+public enum ENiveau {
 Debutant, Intermediaire, Avance, Expert;
 }

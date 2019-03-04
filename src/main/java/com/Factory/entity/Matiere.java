@@ -26,7 +26,7 @@ public class Matiere {
 	private String contenu;
 	
 	@Enumerated(EnumType.ORDINAL)
-	private Eniveau niveau;
+	private ENiveau niveau;
 	
 	@Version
 	private int version;
@@ -39,7 +39,7 @@ public class Matiere {
 	}
 
 	public Matiere(List<Formateur> listeFormateur, String titre, int duree, String objectifs, String prerequis,
-			String contenu, Eniveau niveau) {
+			String contenu, ENiveau niveau) {
 		super();
 		this.listeFormateur = listeFormateur;
 		this.titre = titre;
@@ -101,11 +101,11 @@ public class Matiere {
 		this.contenu = contenu;
 	}
 
-	public Eniveau getNiveau() {
+	public ENiveau getNiveau() {
 		return niveau;
 	}
 
-	public void setNiveau(Eniveau niveau) {
+	public void setNiveau(ENiveau niveau) {
 		this.niveau = niveau;
 	}
 
