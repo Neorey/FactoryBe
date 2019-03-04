@@ -2,6 +2,9 @@ package com.Factory.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Version;
@@ -17,12 +20,15 @@ public class Matiere {
 	private String objectifs;
 	private String prerequis;
 	private String contenu;
+	
+	@Enumerated(EnumType.ORDINAL)
 	private Eniveau niveau;
 	
 	@Version
 	private int version;
 	@Id
 	@Column(name="matiere_id")
+	@GeneratedValue
 	private long id;
 
 	public Matiere() {
