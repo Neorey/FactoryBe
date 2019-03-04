@@ -13,6 +13,8 @@ public class Gestionnaire extends Personne {
 	}
 	@OneToMany(mappedBy="module_id")
 private List<Module> modules;
+	
+	
 	public List<Module> getModules() {
 		return modules;
 	}

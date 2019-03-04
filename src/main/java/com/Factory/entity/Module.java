@@ -33,10 +33,10 @@ public class Module {
 	private Gestionnaire gestionnaire;
 
 	
-	@OneToOne(mappedBy="videoprojecteur")
+	@OneToOne
 	private VideoProjecteur videoProjecteur;
 
-	@OneToOne(mappedBy="salle")
+	@OneToOne
 	private Salle salle;
 
 	public Module() {
