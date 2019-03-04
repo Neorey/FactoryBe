@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -16,13 +17,22 @@ private int memoireDD;
 private Date dateAchat;
 
 
+@OneToOne(mappedBy="ordinateur")
+private Stagiaire stagiaire; 
 
-public Ordinateur(String processeur, int qtRAM, int memoireDD, Date dateAchat) {
+
+
+
+
+
+
+public Ordinateur(String processeur, int qtRAM, int memoireDD, Date dateAchat, Stagiaire stagiaire) {
 	super();
 	this.processeur = processeur;
 	this.qtRAM = qtRAM;
 	this.memoireDD = memoireDD;
 	this.dateAchat = dateAchat;
+	this.stagiaire = stagiaire;
 }
 
 
@@ -79,6 +89,17 @@ public void setDateAchat(Date dateAchat) {
 	this.dateAchat = dateAchat;
 }
 
+
+
+public Stagiaire getStagiaire() {
+	return stagiaire;
+}
+
+
+
+public void setStagiaire(Stagiaire stagiaire) {
+	this.stagiaire = stagiaire;
+}
 
 
 
