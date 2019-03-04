@@ -1,5 +1,6 @@
 package com.Factory.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ public abstract class Materiel {
 
 @Id
 @GeneratedValue
+@Column(name="materiel_id")
 private Long id;
 
 private String code;
