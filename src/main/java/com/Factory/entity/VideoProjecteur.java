@@ -6,6 +6,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.OneToOne;
 
 
 
@@ -20,19 +21,42 @@ private Date dateAchat;
 @Enumerated(EnumType.ORDINAL)
 private EResolutionVideoProjecteur eResolutionVideoProjecteur ;
 
-
-
-public VideoProjecteur(String marque, Date dateAchat, EResolutionVideoProjecteur eResolutionVideoProjecteur) {
-	super();
-	this.marque = marque;
-	this.dateAchat = dateAchat;
-	this.eResolutionVideoProjecteur = eResolutionVideoProjecteur;
-}
+@OneToOne(mappedBy="videoprojecteur")
+private Module module;
 
 
 public VideoProjecteur() {
 	super();
 }
+
+
+
+
+
+public VideoProjecteur(String marque, Date dateAchat, EResolutionVideoProjecteur eResolutionVideoProjecteur,
+		Module module) {
+	super();
+	this.marque = marque;
+	this.dateAchat = dateAchat;
+	this.eResolutionVideoProjecteur = eResolutionVideoProjecteur;
+	this.module = module;
+}
+
+
+
+
+
+public Module getModule() {
+	return module;
+}
+
+
+public void setModule(Module module) {
+	this.module = module;
+}
+
+
+
 
 
 public String getMarque() {

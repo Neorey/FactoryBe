@@ -39,6 +39,8 @@ public class Module {
 	@JoinColumn(name = "gestionnaire")
 	private Gestionnaire gestionnaire;
 
+
+
 	@OneToOne(mappedBy = "videoprojecteur")
 	private VideoProjecteur videoProjecteur;
 
