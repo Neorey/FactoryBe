@@ -11,17 +11,19 @@ public class Gestionnaire extends Personne {
 	public Gestionnaire() {
 		super();
 	}
-	@OneToMany(mappedBy="module_id")
-private List<Module> modules;
-	
-	
+
+
+
+	@OneToMany(mappedBy = "module_id")
+	private List<Module> modules;
+
+
 	public List<Module> getModules() {
 		return modules;
 	}
+
 	public void setModules(List<Module> modules) {
 		this.modules = modules;
 	}
-	
-	
-	
+
 }

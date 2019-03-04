@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
@@ -19,24 +20,28 @@ public class Module {
 
 	@Id
 	@GeneratedValue
-	@Column(name="module_id")
+	@Column(name = "module_id")
 	private long id;
-
+	@OneToOne(mappedBy = "matiere")
 	private Matiere matiere;
+	@OneToOne(mappedBy = "formateur")
 	private Formateur formateur;
+	@OneToMany(mappedBy = "stagiaire")
 	private List<Stagiaire> listStagiaires;
+
 	private Date dateDebut;
 	private Date dateFin;
 
 	@ManyToOne
-	@JoinColumn(name="gestionnaire")
+	@JoinColumn(name = "gestionnaire")
 	private Gestionnaire gestionnaire;
 
-	
-	@OneToOne
+
+
+	@OneToOne(mappedBy = "videoprojecteur")
 	private VideoProjecteur videoProjecteur;
 
-	@OneToOne
+	@OneToOne(mappedBy = "salle")
 	private Salle salle;
 
 	public Module() {
@@ -121,7 +126,5 @@ public class Module {
 	public void setSalle(Salle salle) {
 		this.salle = salle;
 	}
-	
-	
 
 }
