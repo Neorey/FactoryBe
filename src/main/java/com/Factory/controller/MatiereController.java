@@ -26,7 +26,7 @@ public class MatiereController {
 	@GetMapping("/list")
 	public String list(Model model) {
 		model.addAttribute("listeMatiere", matiereRepository.findAll());
-		return "matiere/list"; //test
+		return "matiere/list"; //test-
 	}
 	
 	@GetMapping("/delete")
