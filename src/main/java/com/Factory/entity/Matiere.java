@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -21,12 +24,15 @@ public class Matiere {
 	private String objectifs;
 	private String prerequis;
 	private String contenu;
+	
+	@Enumerated(EnumType.ORDINAL)
 	private Eniveau niveau;
 	
 	@Version
 	private int version;
 	@Id
 	@Column(name="matiere_id")
+	@GeneratedValue
 	private long id;
 
 	public Matiere() {

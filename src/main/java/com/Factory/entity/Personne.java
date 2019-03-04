@@ -1,6 +1,7 @@
 package com.Factory.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
@@ -14,6 +15,7 @@ public abstract class Personne {
 	@Version
 	private int version;
 	@Id
+	@GeneratedValue
 	private long id;
 
 	public Personne() {

@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Version;
 
 @Entity
+
 public abstract class Materiel {
 
 @Id
