@@ -11,7 +11,7 @@ public class Salle extends Materiel {
 	private int capacité;
 	private String nom;
 
-	@OneToOne(mappedBy = "salle")
+	@OneToOne
 	private Module module;
 
 	public Salle(int capacité, String nom, Module module) {

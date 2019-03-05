@@ -14,7 +14,6 @@ import javax.persistence.Version;
 public abstract class Materiel {
 
 @Id
-@Column(name="materiel_id")
 @GeneratedValue
 private Long id;
 
