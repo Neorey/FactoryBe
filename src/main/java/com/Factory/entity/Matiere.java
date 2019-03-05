@@ -37,7 +37,7 @@ public class Matiere {
 	private int version;
 	@Id
 	@Column(name = "matiere_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private long id;
 
 	public Matiere() {

@@ -24,7 +24,7 @@ public class Formation {
 	
 	@Id
 	@Column(name="formation_id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private long id;
 
 	public Formation() {
