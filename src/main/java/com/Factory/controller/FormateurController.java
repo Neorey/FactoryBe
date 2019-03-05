@@ -29,7 +29,7 @@ public class FormateurController {
 	
 	@GetMapping("/list")
 	public String list(Model model) {
-		model.addAttribute("listeFormateur", formateurRepository.findAll());
+		model.addAttribute("listeFormateur", formateurRepository.findAllWithMatiere());
 		return "formateur/list";
 	}
 	
