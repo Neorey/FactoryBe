@@ -14,15 +14,16 @@ import javax.persistence.Version;
 public class Formation {
 
 	@OneToMany//(mappedBy="module_id")
-	List<Module> listModules;
+	private List<Module> listModules;
 	
 	@OneToOne(mappedBy="formation")
-	Gestionnaire gestionnaire;
+	private Gestionnaire gestionnaire;
 	
 	@Version
 	private int version;
+	
 	@Id
-	@Column(name="matiere_id")
+	@Column(name="formation_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
