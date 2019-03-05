@@ -22,29 +22,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.Factory.entity.Materiel;
+import com.Factory.entity.VideoProjecteur;
 import com.Factory.entity.jsonviews.JsonViews;
-import com.Factory.repository.MaterielRepository;
+import com.Factory.repository.VideoProjecteurRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
-@RestController 
-@RequestMapping("/rest/materiel")
-public class MaterielRestController {
-	
+@RestController
+@RequestMapping("/rest/videoProjecteur")
+public class VideoProjecteurRestController {
+
 	@Autowired
-	private MaterielRepository materielRepository;
+	private VideoProjecteurRepository videoProjecteurRepository;
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping(value = { "", "/" })
-	public ResponseEntity<List<Materiel>> list() {
-		return new ResponseEntity<List<Materiel>>(materielRepository.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<VideoProjecteur>> list() {
+		return new ResponseEntity<List<VideoProjecteur>>(videoProjecteurRepository.findAll(), HttpStatus.OK);
 	}
 
 	@PostMapping(value = { "", "/" })
-	public ResponseEntity<Void> insert(@Valid @RequestBody Materiel materiel, BindingResult br, UriComponentsBuilder uCb) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody VideoProjecteur videoProjecteur, BindingResult br,
+			UriComponentsBuilder uCb) {
 		if (br.hasErrors())
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-		materielRepository.save(materiel);
-		URI uri = uCb.path("/rest/materiel/{id}").buildAndExpand(materiel.getId()).toUri();
+		videoProjecteurRepository.save(videoProjecteur);
+		URI uri = uCb.path("/rest/videoProjecteur/{id}").buildAndExpand(videoProjecteur.getId()).toUri();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uri);
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
@@ -52,40 +54,41 @@ public class MaterielRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public ResponseEntity<Materiel> findById(@PathVariable("id") Long id) {
-		Optional<Materiel> opt = materielRepository.findById(id);
+	public ResponseEntity<VideoProjecteur> findById(@PathVariable("id") Long id) {
+		Optional<VideoProjecteur> opt = videoProjecteurRepository.findById(id);
 		if (opt.isPresent())
-			return new ResponseEntity<Materiel>(opt.get(), HttpStatus.OK);
+			return new ResponseEntity<VideoProjecteur>(opt.get(), HttpStatus.OK);
 		else
-			return new ResponseEntity<Materiel>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<VideoProjecteur>(HttpStatus.NOT_FOUND);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> update(@Valid @RequestBody Materiel materiel, BindingResult br,
+	public ResponseEntity<Void> update(@Valid @RequestBody VideoProjecteur videoProjecteur, BindingResult br,
 			@PathVariable(name = "id") Long id) {
-		Optional<Materiel> opt = materielRepository.findById(id);
+		Optional<VideoProjecteur> opt = videoProjecteurRepository.findById(id);
 		if (opt.isPresent()) {
-			Materiel materielEnBase = opt.get();
-			materielEnBase.setCode(materiel.getCode());
-			materielEnBase.setCout(materiel.getCout());
-			materielEnBase.setDisponibilité(materiel.getDisponibilité());
-			materielRepository.save(materielEnBase);
+			VideoProjecteur videoProjecteurEnBase = opt.get();
+			videoProjecteurEnBase.setCode(videoProjecteur.getCode());
+			videoProjecteurEnBase.setCout(videoProjecteur.getCout());
+			videoProjecteurEnBase.setDisponibilité(videoProjecteur.getDisponibilité());
+			videoProjecteurEnBase.setDateAchat(videoProjecteur.getDateAchat());
+			videoProjecteurEnBase.seteResolutionVideoProjecteur(videoProjecteur.geteResolutionVideoProjecteur());
+			videoProjecteurRepository.save(videoProjecteurEnBase);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Materiel> delete(@PathParam("id") Long id) {
-		Optional<Materiel> opt = materielRepository.findById(id);
+	public ResponseEntity<VideoProjecteur> delete(@PathParam("id") Long id) {
+		Optional<VideoProjecteur> opt = videoProjecteurRepository.findById(id);
 		if (opt.isPresent()) {
-			materielRepository.deleteById(id);
+			videoProjecteurRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
 
 }
