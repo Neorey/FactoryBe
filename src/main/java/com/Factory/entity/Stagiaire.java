@@ -1,8 +1,6 @@
 package com.Factory.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -14,12 +12,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Stagiaire extends Personne {
 
 	
-	@JsonView(JsonViews.StagiaireWithOrdinateur.class)
+	@JsonView(JsonViews.Common.class)
 	@OneToOne
 	private Ordinateur ordinateur;
 	
 	@ManyToOne
 	@JoinColumn(name = "module_id", nullable = true)
+	@JsonView(JsonViews.Common.class)
 	private Module module;
 
 	public Stagiaire() {

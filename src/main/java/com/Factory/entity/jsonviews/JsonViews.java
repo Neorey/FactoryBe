@@ -24,9 +24,7 @@ public class JsonViews {
 	public static class MatiereWithModule extends Common {
 
 	};
-	public static class StagiaireWithOrdinateur extends Common {
 
-	};
 	public static class ModuleWithStagiaires extends Common {
 
 	};

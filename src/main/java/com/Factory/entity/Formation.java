@@ -2,7 +2,6 @@ package com.Factory.entity;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +18,6 @@ public class Formation {
 	
 	@JsonView(JsonViews.Common.class)
 	@Id
-	@Column(name="formation_id")
 	@GeneratedValue
 	private long id;
 	

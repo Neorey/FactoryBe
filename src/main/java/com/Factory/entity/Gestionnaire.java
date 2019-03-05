@@ -15,7 +15,7 @@ public class Gestionnaire extends Personne {
 	
 	
 	
-	@JsonView(JsonViews.GestionnaireWithFormation.class)
+	@JsonView(JsonViews.Common.class)
 	@OneToOne
 	private Formation formation;
 
