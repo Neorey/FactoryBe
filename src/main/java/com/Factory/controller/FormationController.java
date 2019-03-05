@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Factory.entity.Formation;
+import com.Factory.entity.Module;
 import com.Factory.repository.FormationRepository;
 
 
@@ -48,13 +49,23 @@ public class FormationController {
 		return goEdit(formation, model);
 		}
 	
-	@GetMapping("/add")
-	public String add(Model model) {
+	@GetMapping("/addModel")
+	public String addModel(Model model) {
 		return goEdit(new Formation(), model);
+	}
+	
+	@GetMapping("/addModule")
+	public String addModule(Model model) {
+		return goEditModule(new Module(), model);
 	}
 	
 	public String goEdit(Formation formation, Model model) {
 		model.addAttribute("formation", formation);
+		return "formation/edit";
+	}
+	
+	public String goEditModule(Module module, Model model) {
+		model.addAttribute("module", module);
 		return "formation/edit";
 	}
 	
