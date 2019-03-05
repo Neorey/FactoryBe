@@ -14,8 +14,8 @@ import javax.persistence.Version;
 public abstract class Materiel {
 
 @Id
-@GeneratedValue(strategy=GenerationType.TABLE)
 @Column(name="materiel_id")
+@GeneratedValue
 private Long id;
 
 private String code;
