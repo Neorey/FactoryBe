@@ -19,7 +19,6 @@ public abstract class Materiel {
 	
 @JsonView(JsonViews.Common.class)
 @Id
-@Column(name="materiel_id")
 @GeneratedValue
 private Long id;
 

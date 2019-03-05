@@ -16,16 +16,16 @@ public class ConsoleApplicationService implements CommandLineRunner {
 	@Autowired
 	private UserRepository userRepository;
 
-//	@Autowired
-//	private PasswordEncoder passwordEncoder;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public void run(String... args) throws Exception {
-//		List<User> users = userRepository.findAll();
-//	for (User user : users) {
-//			user.setPassword(passwordEncoder.encode(user.getUsername()));
-//	userRepository.save(user);
-//	}
+		List<User> users = userRepository.findAll();
+	for (User user : users) {
+			user.setPassword(passwordEncoder.encode(user.getUsername()));
+	userRepository.save(user);
+	}
 	}
 
 }

@@ -54,6 +54,7 @@ public class Module {
 	private Gestionnaire gestionnaire;
 
 
+
 	@JsonView(JsonViews.ModuleWithVideoProjecteur.class)
 	@OneToOne(mappedBy="module")
 	private VideoProjecteur videoProjecteur;
