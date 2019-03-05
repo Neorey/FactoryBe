@@ -19,7 +19,7 @@ public abstract class Personne {
 	@Version
 	private int version;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	private long id;
 
 	public Personne() {

@@ -14,7 +14,7 @@ import javax.persistence.Version;
 public abstract class Materiel {
 
 @Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
+@GeneratedValue(strategy=GenerationType.TABLE)
 @Column(name="materiel_id")
 private Long id;
 

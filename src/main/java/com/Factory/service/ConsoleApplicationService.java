@@ -16,8 +16,8 @@ public class ConsoleApplicationService implements CommandLineRunner {
 	@Autowired
 	private UserRepository userRepository;
 
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public void run(String... args) throws Exception {
