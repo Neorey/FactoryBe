@@ -3,7 +3,6 @@ import java.net.URI;
 import java.util.Optional;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -75,7 +74,7 @@ public class FormationRestController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Formation> delete(@PathParam("id") Long id) {
+	public ResponseEntity<Formation> delete(@PathVariable(name="id") Long id) {
 		Optional<Formation> opt = formationRepository.findById(id);
 		if (opt.isPresent()) {
 			formationRepository.deleteById(id);

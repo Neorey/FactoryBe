@@ -18,7 +18,7 @@ public abstract class Personne {
 	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@JsonView(JsonViews.Common.class)
 	private String nom;
@@ -49,11 +49,11 @@ public abstract class Personne {
 		this.version = version;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

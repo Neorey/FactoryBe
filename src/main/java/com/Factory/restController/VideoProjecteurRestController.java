@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -80,7 +79,7 @@ public class VideoProjecteurRestController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<VideoProjecteur> delete(@PathParam("id") Long id) {
+	public ResponseEntity<VideoProjecteur> delete(@PathVariable(name="id") Long id) {
 		Optional<VideoProjecteur> opt = videoProjecteurRepository.findById(id);
 		if (opt.isPresent()) {
 			videoProjecteurRepository.deleteById(id);

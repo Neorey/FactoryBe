@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -80,7 +79,7 @@ public class SalleRestController {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Salle> delete(@PathParam("id") Long id) {
+	public ResponseEntity<Salle> delete(@PathVariable(name="id") Long id) {
 		Optional<Salle> opt = salleRepository.findById(id);
 		if (opt.isPresent()) {
 			salleRepository.deleteById(id);
