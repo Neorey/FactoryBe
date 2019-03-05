@@ -3,7 +3,6 @@ package com.Factory.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
@@ -35,9 +34,6 @@ public class Formateur extends Personne {
 
 	public void setModule(Module module) {
 		this.module = module;
-	}
-
-	
-	
+	}	
 
 }
