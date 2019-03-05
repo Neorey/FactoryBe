@@ -8,19 +8,33 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Version;
 
+import com.Factory.entity.jsonviews.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Personne {
 
-	String nom;
-	String prenom;
-	String adresse;
-	String tel;
-	@Version
-	private int version;
+	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue
 	private long id;
+	
+	@JsonView(JsonViews.Common.class)
+	private String nom;
+	@JsonView(JsonViews.Common.class)
+	private String prenom;
+	@JsonView(JsonViews.Common.class)
+	private String adresse;
+	
+	@JsonView(JsonViews.Common.class)
+	private String tel;
+	
+	
+	@Version
+	private int version;
+	
 
 	public Personne() {
 	}

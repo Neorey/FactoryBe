@@ -8,9 +8,14 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import com.Factory.entity.jsonviews.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Formateur extends Personne {
 
+	
+	@JsonView(JsonViews.FormateurWithMatieres.class)
 	@ManyToMany
 	@JoinTable(name = "Formateur_Matiere",
 	joinColumns = @JoinColumn(name = "Formateur"),
@@ -18,6 +23,8 @@ public class Formateur extends Personne {
 	// @JoinColumn(name="matiere_id")
 	private List<Matiere> listeMatiere;
 
+	
+	@JsonView(JsonViews.FormateurWithModule.class)
 	@OneToOne(mappedBy = "formateur")
 	private Module module;
 

@@ -9,17 +9,27 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Version;
 
+import com.Factory.entity.jsonviews.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Materiel {
 
+	
+@JsonView(JsonViews.Common.class)
 @Id
 @Column(name="materiel_id")
 @GeneratedValue
 private Long id;
 
+@JsonView(JsonViews.Common.class)
 private String code;
+
+@JsonView(JsonViews.Common.class)
 private int cout;
+
+@JsonView(JsonViews.Common.class)
 private Boolean disponibilité;
 
 @Version

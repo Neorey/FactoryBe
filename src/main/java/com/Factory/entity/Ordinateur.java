@@ -6,17 +6,24 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import com.Factory.entity.jsonviews.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 @DiscriminatorValue("ORDINATEUR")
 public class Ordinateur extends Materiel {
 
+@JsonView(JsonViews.Common.class)
 private String processeur; 
+@JsonView(JsonViews.Common.class)
 private int qtRAM;
+@JsonView(JsonViews.Common.class)
 private int memoireDD;
+@JsonView(JsonViews.Common.class)
 private Date dateAchat;
 
-
+@JsonView(JsonViews.OrdinateurWithStagiaire.class)
 @OneToOne(mappedBy="ordinateur")
 private Stagiaire stagiaire; 
 

@@ -13,24 +13,36 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
+import com.Factory.entity.jsonviews.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
+
+
 @Entity
 public class Module {
-	@Version
-	private int version;
-
+	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue
 	@Column(name = "module_id")
 	private long id;
+	
+	@JsonView(JsonViews.ModuleWithMatiere.class)
 	@OneToOne(mappedBy = "module")
 	private Matiere matiere;
+	
+	@JsonView(JsonViews.ModuleWithFormateur.class)
 	@OneToOne
 	private Formateur formateur;
 	
+	@JsonView(JsonViews.ModuleWithStagiaires.class)
 	@OneToMany(mappedBy = "module")
 	private List<Stagiaire> listStagiaires;
 
+	@JsonView(JsonViews.Common.class)
 	private Date dateDebut;
+	
+	@JsonView(JsonViews.Common.class)
 	private Date dateFin;
 	
 	@ManyToOne
@@ -42,13 +54,20 @@ public class Module {
 	private Gestionnaire gestionnaire;
 
 
-
+	@JsonView(JsonViews.ModuleWithVideoProjecteur.class)
 	@OneToOne(mappedBy="module")
 	private VideoProjecteur videoProjecteur;
 
+	@JsonView(JsonViews.ModuleWithSalle.class)
 	@OneToOne(mappedBy="module")
 	private Salle salle;
 
+	
+	@Version
+	private int version;
+	
+	
+	
 	public Module() {
 	}
 

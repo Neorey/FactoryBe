@@ -5,27 +5,36 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
+
+import com.Factory.entity.jsonviews.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 @Entity
 public class Formation {
-
+	
+	@JsonView(JsonViews.Common.class)
+	@Id
+	@Column(name="formation_id")
+	@GeneratedValue
+	private long id;
+	
+	@JsonView(JsonViews.FormationWithModules.class)
 	@OneToMany(mappedBy="formation")
 	private List<Module> listModules;
 	
+	@JsonView(JsonViews.FormationWithGestionnaire.class)
 	@OneToOne(mappedBy="formation")
 	private Gestionnaire gestionnaire;
 	
 	@Version
 	private int version;
 	
-	@Id
-	@Column(name="formation_id")
-	@GeneratedValue
-	private long id;
+	
 
 	public Formation() {
 	}

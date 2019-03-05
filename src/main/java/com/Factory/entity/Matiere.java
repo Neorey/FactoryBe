@@ -12,30 +12,54 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
+import com.Factory.entity.jsonviews.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Matiere {
-
-	@ManyToMany(mappedBy="listeMatiere")
-	private List<Formateur> listeFormateur;
 	
-	@OneToOne
-	private Module module;
-
-	private String titre;
-	private int duree;
-	private String objectifs;
-	private String prerequis;
-	private String contenu;
-
-	@Enumerated(EnumType.ORDINAL)
-	private ENiveau niveau;
-
-	@Version
-	private int version;
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@Column(name = "matiere_id")
 	@GeneratedValue
 	private long id;
+	
+	@JsonView(JsonViews.Common.class)
+	private String titre;
+	
+	@JsonView(JsonViews.Common.class)
+	private int duree;
+	
+	@JsonView(JsonViews.Common.class)
+	private String objectifs;
+	
+	@JsonView(JsonViews.Common.class)
+	private String prerequis;
+	
+	@JsonView(JsonViews.Common.class)
+	private String contenu;
+	
+	
+	@JsonView(JsonViews.Common.class)
+	@Enumerated(EnumType.ORDINAL)
+	private ENiveau niveau;
+	
+	
+	@JsonView(JsonViews.MatiereWithFormateurs.class)
+	@ManyToMany(mappedBy="listeMatiere")
+	private List<Formateur> listeFormateur;
+	
+	
+	@JsonView(JsonViews.MatiereWithModule.class)
+	@OneToOne
+	private Module module;
+
+	
+	
+
+	@Version
+	private int version;
+	
 
 	public Matiere() {
 	}

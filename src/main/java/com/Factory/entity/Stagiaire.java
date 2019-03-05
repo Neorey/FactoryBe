@@ -1,13 +1,20 @@
 package com.Factory.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.Factory.entity.jsonviews.JsonViews;
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Stagiaire extends Personne {
 
+	
+	@JsonView(JsonViews.StagiaireWithOrdinateur.class)
 	@OneToOne
 	private Ordinateur ordinateur;
 	
