@@ -40,8 +40,6 @@ public class Module {
 	@JoinColumn(name = "gestionnaire", nullable = true)
 	private Gestionnaire gestionnaire;
 
-
-
 	@OneToOne(mappedBy="module")
 	private VideoProjecteur videoProjecteur;
 
