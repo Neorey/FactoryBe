@@ -28,7 +28,7 @@ import com.Factory.repository.MatiereRepository;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController 
-@RequestMapping("/rest/materiel")
+@RequestMapping("/rest/matiere")
 public class MatiereRestController {
 	
 	@Autowired
