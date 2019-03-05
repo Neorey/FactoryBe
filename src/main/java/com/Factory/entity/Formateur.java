@@ -25,6 +25,7 @@ public class Formateur extends Personne {
 
 	
 	@JsonView(JsonViews.FormateurWithModule.class)
+	@JoinColumn(name = "module_id", nullable = true)
 	@OneToOne(mappedBy = "formateur")
 	private Module module;
 

@@ -19,7 +19,7 @@ public class Stagiaire extends Personne {
 	private Ordinateur ordinateur;
 	
 	@ManyToOne
-	@JoinColumn(name="module")
+	@JoinColumn(name = "module_id", nullable = true)
 	private Module module;
 
 	public Stagiaire() {

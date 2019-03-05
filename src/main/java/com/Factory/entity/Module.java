@@ -32,6 +32,7 @@ public class Module {
 	private Matiere matiere;
 	
 	@JsonView(JsonViews.ModuleWithFormateur.class)
+	@JoinColumn(name = "formateur_id", nullable = true)
 	@OneToOne
 	private Formateur formateur;
 	
@@ -50,7 +51,7 @@ public class Module {
 	private Formation formation;
 
 	@ManyToOne
-	@JoinColumn(name = "gestionnaire")
+	@JoinColumn(name = "gestionnaire_id", nullable = true)
 	private Gestionnaire gestionnaire;
 
 

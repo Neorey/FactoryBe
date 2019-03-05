@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
@@ -46,6 +47,7 @@ public class Matiere {
 	
 	
 	@JsonView(JsonViews.MatiereWithFormateurs.class)
+//	@JoinColumn(name = "formateur_id", nullable = true)
 	@ManyToMany(mappedBy="listeMatiere")
 	private List<Formateur> listeFormateur;
 	
