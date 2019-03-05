@@ -5,6 +5,10 @@ import java.util.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.Factory.entity.jsonviews.JsonViews;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -20,7 +24,10 @@ private String processeur;
 private int qtRAM;
 @JsonView(JsonViews.Common.class)
 private int memoireDD;
+
 @JsonView(JsonViews.Common.class)
+@Temporal(TemporalType.DATE)
+@DateTimeFormat(pattern="yyyy-MM-dd")
 private Date dateAchat;
 
 @JsonView(JsonViews.OrdinateurWithStagiaire.class)
