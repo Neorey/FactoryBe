@@ -23,28 +23,29 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.Factory.entity.Materiel;
+import com.Factory.entity.Ordinateur;
 import com.Factory.entity.jsonviews.JsonViews;
-import com.Factory.repository.MaterielRepository;
+import com.Factory.repository.*;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController 
-@RequestMapping("/rest/materiel")
-public class MaterielRestController {
+@RequestMapping("/rest/ordinateur")
+public class OrdinateurRestController {
 	
 	@Autowired
-	private MaterielRepository materielRepository;
+	private OrdinateurRepository ordinateurRepository;
 	@JsonView(JsonViews.Common.class)
 	@GetMapping(value = { "", "/" })
-	public ResponseEntity<List<Materiel>> list() {
-		return new ResponseEntity<List<Materiel>>(materielRepository.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Ordinateur>> list() {
+		return new ResponseEntity<List<Ordinateur>>(ordinateurRepository.findAll(), HttpStatus.OK);
 	}
 
 	@PostMapping(value = { "", "/" })
-	public ResponseEntity<Void> insert(@Valid @RequestBody Materiel materiel, BindingResult br, UriComponentsBuilder uCb) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody Ordinateur ordinateur, BindingResult br, UriComponentsBuilder uCb) {
 		if (br.hasErrors())
 			return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
-		materielRepository.save(materiel);
-		URI uri = uCb.path("/rest/materiel/{id}").buildAndExpand(materiel.getId()).toUri();
+		ordinateurRepository.save(ordinateur);
+		URI uri = uCb.path("/rest/ordinateur/{id}").buildAndExpand(ordinateur.getId()).toUri();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(uri);
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
@@ -52,34 +53,39 @@ public class MaterielRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public ResponseEntity<Materiel> findById(@PathVariable("id") Long id) {
-		Optional<Materiel> opt = materielRepository.findById(id);
+	public ResponseEntity<Ordinateur> findById(@PathVariable("id") Long id) {
+		Optional<Ordinateur> opt = ordinateurRepository.findById(id);
 		if (opt.isPresent())
-			return new ResponseEntity<Materiel>(opt.get(), HttpStatus.OK);
+			return new ResponseEntity<Ordinateur>(opt.get(), HttpStatus.OK);
 		else
-			return new ResponseEntity<Materiel>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Ordinateur>(HttpStatus.NOT_FOUND);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Void> update(@Valid @RequestBody Materiel materiel, BindingResult br,
+	public ResponseEntity<Void> update(@Valid @RequestBody Ordinateur ordinateur, BindingResult br,
 			@PathVariable(name = "id") Long id) {
-		Optional<Materiel> opt = materielRepository.findById(id);
+		Optional<Ordinateur> opt = ordinateurRepository.findById(id);
 		if (opt.isPresent()) {
-			Materiel materielEnBase = opt.get();
-			materielEnBase.setCode(materiel.getCode());
-			materielEnBase.setCout(materiel.getCout());
-			materielEnBase.setDisponibilité(materiel.getDisponibilité());
-			materielRepository.save(materielEnBase);
+			Ordinateur ordinateurEnBase = opt.get();
+			ordinateurEnBase.setCode(ordinateur.getCode());
+			ordinateurEnBase.setCout(ordinateur.getCout());
+			ordinateurEnBase.setDisponibilité(ordinateur.getDisponibilité());
+			ordinateurEnBase.setDateAchat(ordinateur.getDateAchat());
+			ordinateurEnBase.setMemoireDD(ordinateur.getMemoireDD());
+			ordinateurEnBase.setProcesseur(ordinateur.getProcesseur());
+			ordinateurEnBase.setQtRAM(ordinateur.getQtRAM());
+			ordinateurEnBase.setStagiaire(ordinateur.getStagiaire());
+			ordinateurRepository.save(ordinateurEnBase);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Materiel> delete(@PathParam("id") Long id) {
-		Optional<Materiel> opt = materielRepository.findById(id);
+	public ResponseEntity<Ordinateur> delete(@PathParam("id") Long id) {
+		Optional<Ordinateur> opt = ordinateurRepository.findById(id);
 		if (opt.isPresent()) {
-			materielRepository.deleteById(id);
+			ordinateurRepository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 
@@ -87,5 +93,5 @@ public class MaterielRestController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
-
 }
+
