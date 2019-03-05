@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -13,16 +14,17 @@ import javax.persistence.Version;
 public class Formation {
 
 	@OneToMany//(mappedBy="module_id")
-	List<Module> listModules;
+	private List<Module> listModules;
 	
 	@OneToOne(mappedBy="formation")
-	Gestionnaire gestionnaire;
+	private Gestionnaire gestionnaire;
 	
 	@Version
 	private int version;
+	
 	@Id
-	@Column(name="matiere_id")
-	@GeneratedValue
+	@Column(name="formation_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 
 	public Formation() {

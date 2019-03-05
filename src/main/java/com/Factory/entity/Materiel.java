@@ -3,6 +3,7 @@ package com.Factory.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -13,7 +14,7 @@ import javax.persistence.Version;
 public abstract class Materiel {
 
 @Id
-@GeneratedValue
+@GeneratedValue(strategy=GenerationType.TABLE)
 @Column(name="materiel_id")
 private Long id;
 

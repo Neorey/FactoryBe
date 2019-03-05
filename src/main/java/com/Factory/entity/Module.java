@@ -33,7 +33,7 @@ public class Module {
 	private Date dateFin;
 	
 	@ManyToOne
-	@JoinColumn(name = "formation")
+	@JoinColumn(name = "formation_id")
 	private Formation formation;
 
 	@ManyToOne
