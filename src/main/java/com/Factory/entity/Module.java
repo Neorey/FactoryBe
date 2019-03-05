@@ -11,7 +11,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.Factory.entity.jsonviews.JsonViews;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -41,9 +45,13 @@ public class Module {
 	private List<Stagiaire> listStagiaires;
 
 	@JsonView(JsonViews.Common.class)
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateDebut;
 	
 	@JsonView(JsonViews.Common.class)
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateFin;
 	
 	@ManyToOne
