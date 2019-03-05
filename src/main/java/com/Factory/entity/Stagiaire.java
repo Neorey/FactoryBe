@@ -9,10 +9,10 @@ import javax.persistence.OneToOne;
 public class Stagiaire extends Personne {
 
 	@OneToOne
-	@JoinColumn(name = "ordinateur_id")
 	private Ordinateur ordinateur;
 	
 	@ManyToOne
+	@JoinColumn(name="module")
 	private Module module;
 
 	public Stagiaire() {

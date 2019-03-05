@@ -26,6 +26,7 @@ public class Module {
 	private Matiere matiere;
 	@OneToOne
 	private Formateur formateur;
+	
 	@OneToMany(mappedBy = "module")
 	private List<Stagiaire> listStagiaires;
 
@@ -33,11 +34,11 @@ public class Module {
 	private Date dateFin;
 	
 	@ManyToOne
-	@JoinColumn(name = "formation_id")
+	@JoinColumn(name = "formation")
 	private Formation formation;
 
 	@ManyToOne
-	@JoinColumn(name = "gestionnaire", nullable = true)
+	@JoinColumn(name = "gestionnaire")
 	private Gestionnaire gestionnaire;
 
 
@@ -45,7 +46,7 @@ public class Module {
 	@OneToOne(mappedBy="module")
 	private VideoProjecteur videoProjecteur;
 
-	@OneToOne
+	@OneToOne(mappedBy="module")
 	private Salle salle;
 
 	public Module() {

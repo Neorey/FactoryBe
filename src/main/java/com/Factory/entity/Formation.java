@@ -13,7 +13,7 @@ import javax.persistence.Version;
 @Entity
 public class Formation {
 
-	@OneToMany//(mappedBy="module_id")
+	@OneToMany(mappedBy="formation")
 	private List<Module> listModules;
 	
 	@OneToOne(mappedBy="formation")
