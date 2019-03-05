@@ -70,7 +70,7 @@ public class VideoProjecteurRestController {
 			VideoProjecteur videoProjecteurEnBase = opt.get();
 			videoProjecteurEnBase.setCode(videoProjecteur.getCode());
 			videoProjecteurEnBase.setCout(videoProjecteur.getCout());
-			videoProjecteurEnBase.setDisponibilité(videoProjecteur.getDisponibilité());
+			videoProjecteurEnBase.setDisponibilite(videoProjecteur.getDisponibilite());
 			videoProjecteurEnBase.setDateAchat(videoProjecteur.getDateAchat());
 			videoProjecteurEnBase.seteResolutionVideoProjecteur(videoProjecteur.geteResolutionVideoProjecteur());
 			videoProjecteurRepository.save(videoProjecteurEnBase);

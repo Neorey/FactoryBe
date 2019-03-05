@@ -1,9 +1,7 @@
 package com.Factory.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -29,7 +27,7 @@ private String code;
 private int cout;
 
 @JsonView(JsonViews.Common.class)
-private Boolean disponibilité;
+private Boolean disponibilite;
 
 @Version
 private int version;
@@ -41,11 +39,11 @@ public Materiel() {
 }
 
 
-public Materiel(String code, int cout, Boolean disponibilité) {
+public Materiel(String code, int cout, Boolean disponibilite) {
 	super();
 	this.code = code;
 	this.cout = cout;
-	this.disponibilité = disponibilité;
+	this.disponibilite = disponibilite;
 }
 
 
@@ -80,13 +78,13 @@ public void setCout(int cout) {
 }
 
 
-public Boolean getDisponibilité() {
-	return disponibilité;
+public Boolean getDisponibilite() {
+	return disponibilite;
 }
 
 
-public void setDisponibilité(Boolean disponibilité) {
-	this.disponibilité = disponibilité;
+public void setDisponibilite(Boolean disponibilite) {
+	this.disponibilite = disponibilite;
 }
 
 

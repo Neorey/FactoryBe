@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.Factory.entity.Materiel;
 import com.Factory.entity.Ordinateur;
 import com.Factory.entity.jsonviews.JsonViews;
 import com.Factory.repository.*;
@@ -69,7 +68,7 @@ public class OrdinateurRestController {
 			Ordinateur ordinateurEnBase = opt.get();
 			ordinateurEnBase.setCode(ordinateur.getCode());
 			ordinateurEnBase.setCout(ordinateur.getCout());
-			ordinateurEnBase.setDisponibilité(ordinateur.getDisponibilité());
+			ordinateurEnBase.setDisponibilite(ordinateur.getDisponibilite());
 			ordinateurEnBase.setDateAchat(ordinateur.getDateAchat());
 			ordinateurEnBase.setMemoireDD(ordinateur.getMemoireDD());
 			ordinateurEnBase.setProcesseur(ordinateur.getProcesseur());
