@@ -22,29 +22,30 @@ public class Module {
 	@GeneratedValue
 	@Column(name = "module_id")
 	private long id;
-	@OneToOne(mappedBy = "matiere")
+	@OneToOne(mappedBy = "module")
 	private Matiere matiere;
-	@OneToOne(mappedBy = "formateur")
+	@OneToOne
 	private Formateur formateur;
-	@OneToMany(mappedBy = "stagiaire")
+	@OneToMany(mappedBy = "module")
 	private List<Stagiaire> listStagiaires;
 
 	private Date dateDebut;
 	private Date dateFin;
 	
 	@ManyToOne
+	@JoinColumn(name = "formation")
 	private Formation formation;
 
 	@ManyToOne
-	@JoinColumn(name = "gestionnaire")
+	@JoinColumn(name = "gestionnaire", nullable = true)
 	private Gestionnaire gestionnaire;
 
 
 
-	@OneToOne(mappedBy = "videoprojecteur")
+	@OneToOne(mappedBy="module")
 	private VideoProjecteur videoProjecteur;
 
-	@OneToOne(mappedBy = "salle")
+	@OneToOne
 	private Salle salle;
 
 	public Module() {

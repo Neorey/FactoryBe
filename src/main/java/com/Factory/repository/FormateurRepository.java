@@ -11,7 +11,7 @@ import com.Factory.entity.Formateur;
 @Repository
 public interface FormateurRepository extends JpaRepository<Formateur, Long>{
 	
-	@Query("select p form Formateur p left join fetch p.matiere")
-	List<Formateur> findAllWithMatiere();
+
+//	List<Formateur> findAllWithMatiere();
 
 }

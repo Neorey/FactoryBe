@@ -2,16 +2,28 @@ package com.Factory.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
+import javax.persistence.Version;
+@Entity
 public class Formation {
 
-	@OneToMany(mappedBy="module_id")
+	@OneToMany//(mappedBy="module_id")
 	List<Module> listModules;
 	
-	@OneToOne(mappedBy="gestionnaire")
+	@OneToOne(mappedBy="formation")
 	Gestionnaire gestionnaire;
+	
+	@Version
+	private int version;
+	@Id
+	@Column(name="matiere_id")
+	@GeneratedValue
+	private long id;
 
 	public Formation() {
 	}
@@ -30,6 +42,22 @@ public class Formation {
 
 	public void setGestionnaire(Gestionnaire gestionnaire) {
 		this.gestionnaire = gestionnaire;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	

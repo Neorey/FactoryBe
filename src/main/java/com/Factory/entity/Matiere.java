@@ -10,28 +10,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
 @Entity
 public class Matiere {
 
 	@ManyToMany
-	@JoinTable( name="MATIERE_TITRE")
+	@JoinTable(name = "MATIERE")
 	private List<Formateur> listeFormateur;
 	
+	@OneToOne
+	private Module module;
+
 	private String titre;
 	private int duree;
 	private String objectifs;
 	private String prerequis;
 	private String contenu;
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private ENiveau niveau;
-	
+
 	@Version
 	private int version;
 	@Id
-	@Column(name="matiere_id")
+	@Column(name = "matiere_id")
 	@GeneratedValue
 	private long id;
 
@@ -49,9 +53,6 @@ public class Matiere {
 		this.contenu = contenu;
 		this.niveau = niveau;
 	}
-
-
-	
 
 	public List<Formateur> getListeFormateur() {
 		return listeFormateur;
@@ -124,5 +125,15 @@ public class Matiere {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public Module getModule() {
+		return module;
+	}
+
+	public void setModule(Module module) {
+		this.module = module;
+	}
+	
+	
 
 }

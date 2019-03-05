@@ -18,16 +18,16 @@ public class Gestionnaire extends Personne {
 
 
 
-	@OneToMany(mappedBy = "module_id")
-	private List<Module> modules;
+	@OneToMany(mappedBy = "gestionnaire")
+	private List<Module> module;
 
 
-	public List<Module> getModules() {
-		return modules;
+	public List<Module> getModule() {
+		return module;
 	}
 	
-	public void setModules(List<Module> modules) {
-		this.modules = modules;
+	public void setModule(List<Module> module) {
+		this.module = module;
 	}
 
 	public Formation getFormation() {

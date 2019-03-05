@@ -21,7 +21,7 @@ private Date dateAchat;
 @Enumerated(EnumType.ORDINAL)
 private EResolutionVideoProjecteur eResolutionVideoProjecteur ;
 
-@OneToOne(mappedBy="videoprojecteur")
+@OneToOne
 private Module module;
 
 
