@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.Factory.entity.ENiveau;
 import com.Factory.entity.Matiere;
 import com.Factory.repository.MatiereRepository;
 
@@ -54,9 +56,11 @@ public class MatiereController {
 	
 	public String goEdit(Matiere matiere, Model model) {
 		model.addAttribute("matiere", matiere);
+		model.addAttribute("allNiveau", ENiveau.values());
 		return "matiere/edit";
 	}
 	
+	@GetMapping("/save")
 	public String save(@Valid @ModelAttribute("matiere") Matiere matiere, BindingResult br, Model model) {
 		if(br.hasErrors()) {
 			return goEdit(matiere, model);
