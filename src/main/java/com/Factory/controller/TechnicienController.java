@@ -57,6 +57,7 @@ public class TechnicienController {
 		return "technicien/edit";
 	}
 	
+	@GetMapping("/save")
 	public String save(@Valid @ModelAttribute("technicien") Technicien technicien, BindingResult br, Model model) {
 		if(br.hasErrors()) {
 			return goEdit(technicien, model);

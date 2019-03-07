@@ -57,6 +57,7 @@ public class OrdinateurController {
 		return "ordinateur/edit";
 	}
 	
+	@GetMapping("/save")
 	public String save(@Valid @ModelAttribute("ordinateur") Ordinateur ordinateur, BindingResult br, Model model) {
 		if(br.hasErrors()) {
 			return goEdit(ordinateur, model);

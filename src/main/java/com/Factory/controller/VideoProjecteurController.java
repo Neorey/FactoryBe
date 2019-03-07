@@ -58,6 +58,7 @@ public class VideoProjecteurController {
 		return "videoProjecteur/edit";
 	}
 	
+	@GetMapping("/save")
 	public String save(@Valid @ModelAttribute("videoProjecteur") VideoProjecteur videoProjecteur, BindingResult br, Model model) {
 		if(br.hasErrors()) {
 			return goEdit(videoProjecteur, model);

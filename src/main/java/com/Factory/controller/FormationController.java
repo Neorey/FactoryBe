@@ -69,6 +69,7 @@ public class FormationController {
 		return "formation/edit";
 	}
 	
+	@GetMapping("/save")
 	public String save(@Valid @ModelAttribute("formation") Formation formation, BindingResult br, Model model) {
 		if(br.hasErrors()) {
 			return goEdit(formation, model);

@@ -58,6 +58,7 @@ public class GestionnaireController {
 		return "gestionnaire/edit";
 	}
 	
+	@GetMapping("/save")
 	public String save(@Valid @ModelAttribute("gestionnaire") Gestionnaire gestionnaire, BindingResult br, Model model) {
 		if(br.hasErrors()) {
 			return goEdit(gestionnaire, model);
