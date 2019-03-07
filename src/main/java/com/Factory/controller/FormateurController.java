@@ -58,12 +58,12 @@ public class FormateurController {
 	
 	public String goEdit(Formateur formateur, Model model) {
 		model.addAttribute("formateur", formateur);
-		model.addAttribute("matiere", matiereRepository.findAll());
 		return "formateur/edit";
 	}
 	
-	public String save(@Valid @ModelAttribute("formateur") Formateur formateur, BindingResult br, Model model) {
-		if(br.hasErrors()) {
+	@GetMapping("/save")
+	public String save(@ModelAttribute("formateur") Formateur formateur, BindingResult br, Model model) {
+		if (br.hasErrors()) { // hasErrors determine si ya une erreur, cest un booleen
 			return goEdit(formateur, model);
 		}
 		formateurRepository.save(formateur);
