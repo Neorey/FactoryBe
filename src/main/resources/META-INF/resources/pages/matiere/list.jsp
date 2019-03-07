@@ -32,6 +32,7 @@
 			<th>Prérequis</th>
 			<th>Contenu</th>
 			<th>Niveau</th>
+			<th>Module Id</th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -42,7 +43,9 @@
 				<td>${matiere.duree}</td>
 				<td>${matiere.objectifs}</td>
 				<td>${matiere.prerequis}</td>
+				<td>${matiere.contenu }</td>
 				<td>${matiere.niveau}</td>
+				<td>${matiere.module.id }</td>
 
 				<td><a href="edit?id=${matiere.id}" class="btn btn-info">Modifier</a></td>
 				<td><!--  sec:authorize access="hasRole('ROLE_GESTIONNAIRE')"-->

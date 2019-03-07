@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -22,7 +23,7 @@ public class Matiere {
 	@Id
 	@Column(name = "matiere_id")
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@JsonView(JsonViews.Common.class)
 	private String titre;
@@ -47,7 +48,7 @@ public class Matiere {
 	
 	@JsonView(JsonViews.MatiereWithFormateurs.class)
 //	@JoinColumn(name = "formateur_id", nullable = true)
-	@ManyToMany(mappedBy="listeMatiere")
+	@ManyToMany(mappedBy="listeMatiere",fetch=FetchType.EAGER)
 	private List<Formateur> listeFormateur;
 	
 	
@@ -141,11 +142,11 @@ public class Matiere {
 		this.version = version;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

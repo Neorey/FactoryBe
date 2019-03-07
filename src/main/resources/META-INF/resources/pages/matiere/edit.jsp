@@ -53,7 +53,13 @@
 			<form:input path="contenu" cssClass="form-control" />
 
 		</div>
-		
+		<div class="form-group">
+			<form:label path="module.id">Module :</form:label>
+			<form:select path="module.id" cssClass="form-control">
+				<form:options items="${allModules}" itemLabel="nomModule" itemValue="id" />
+			</form:select>
+			
+		</div>
 		
 		
 		

@@ -10,13 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.Factory.entity.ENiveau;
 import com.Factory.entity.Matiere;
 import com.Factory.repository.MatiereRepository;
+import com.Factory.repository.ModuleRepository;
 
 @Controller
 @RequestMapping("/matiere")
@@ -24,6 +24,10 @@ public class MatiereController {
 
 	@Autowired
 	private MatiereRepository matiereRepository;
+	
+	
+	@Autowired
+	private ModuleRepository moduleRepository;
 	
 	@GetMapping("/list")
 	public String list(Model model) {
@@ -57,6 +61,7 @@ public class MatiereController {
 	public String goEdit(Matiere matiere, Model model) {
 		model.addAttribute("matiere", matiere);
 		model.addAttribute("allNiveau", ENiveau.values());
+		model.addAttribute("allModules", moduleRepository.findAll());
 		return "matiere/edit";
 	}
 	

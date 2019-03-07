@@ -21,6 +21,9 @@ public class Formation {
 	@GeneratedValue
 	private long id;
 	
+	@JsonView(JsonViews.Common.class)
+	private String nomFormation;
+	
 	@JsonView(JsonViews.FormationWithModules.class)
 	@OneToMany(mappedBy="formation")
 	private List<Module> listModules;
@@ -68,6 +71,16 @@ public class Formation {
 	public void setId(long id) {
 		this.id = id;
 	}
+
+	public String getNomFormation() {
+		return nomFormation;
+	}
+
+	public void setNomFormation(String nomFormation) {
+		this.nomFormation = nomFormation;
+	}
+	
+	
 	
 	
 	

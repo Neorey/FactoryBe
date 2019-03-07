@@ -3,7 +3,6 @@ package com.Factory.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,17 +27,15 @@ public class Module {
 	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue
-	@Column(name = "module_id")
-	private long id;
+	private Long id;
 	
-	@JsonView(JsonViews.ModuleWithMatiere.class)
+	@JsonView(JsonViews.Common.class)
+	private String nomModule;
+	
+	@JsonView(JsonViews.Common.class)
 	@OneToOne(mappedBy = "module")
 	private Matiere matiere;
 	
-	@JsonView(JsonViews.ModuleWithFormateur.class)
-	@JoinColumn(name = "formateur_id", nullable = true)
-	@OneToOne
-	private Formateur formateur;
 	
 	@JsonView(JsonViews.ModuleWithStagiaires.class)
 	@OneToMany(mappedBy = "module")
@@ -89,11 +86,11 @@ public class Module {
 		this.version = version;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -105,13 +102,7 @@ public class Module {
 		this.matiere = matiere;
 	}
 
-	public Formateur getFormateur() {
-		return formateur;
-	}
 
-	public void setFormateur(Formateur formateur) {
-		this.formateur = formateur;
-	}
 
 	public List<Stagiaire> getListStagiaires() {
 		return listStagiaires;
@@ -159,6 +150,22 @@ public class Module {
 
 	public void setSalle(Salle salle) {
 		this.salle = salle;
+	}
+
+	public String getNomModule() {
+		return nomModule;
+	}
+
+	public void setNomModule(String nomModule) {
+		this.nomModule = nomModule;
+	}
+
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
 	}
 
 }

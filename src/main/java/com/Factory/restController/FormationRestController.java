@@ -65,6 +65,7 @@ public class FormationRestController {
 		Optional<Formation> opt = formationRepository.findById(id);
 		if (opt.isPresent()) {
 			Formation formationEnBase = opt.get();
+			formationEnBase.setNomFormation(formation.getNomFormation());
 			formationEnBase.setListModules(formation.getListModules());
 			formationEnBase.setGestionnaire(formation.getGestionnaire());
 			formationRepository.save(formationEnBase);

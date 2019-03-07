@@ -69,7 +69,6 @@ public class FormateurRestController {
 			formateurEnBase.setPrenom(formateur.getPrenom());
 			formateurEnBase.setTel(formateur.getTel());
 			formateurEnBase.setListeMatiere(formateur.getListeMatiere());
-			formateurEnBase.setModule(formateur.getModule());
 			formateurRepository.save(formateurEnBase);
 			return new ResponseEntity<>(HttpStatus.OK);
 		} else
