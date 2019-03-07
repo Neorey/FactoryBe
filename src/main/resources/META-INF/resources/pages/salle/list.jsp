@@ -27,28 +27,30 @@
 <sec:authorize access="hasRole('ROLE_USER')">Je suis USER !</sec:authorize>
 </div>
 	<h1>
-		<spring:message code="formateur.list.title" />
+		<spring:message code="salle.list.title" />
 	</h1>
 	<a href="add" class="btn btn-link"><spring:message
-			code="formateur.list.add" /></a>
+			code="salle.list.add" /></a>
 	<table class="table">
 		<tr>
-			<th><spring:message code="formateur.list.header.id" /></th>
-			<th><spring:message code="formateur.list.header.name" /></th>
-			<th><spring:message code="formateur.list.header.lastname" /></th>
-			<th><spring:message code="formateur.list.header.tel" /></th>
-			<th><spring:message code="formateur.list.header.adresse" /></th>
+			<th><spring:message code="salle.list.header.id" /></th>
+			<th><spring:message code="salle.list.header.nom" /></th>
+			<th><spring:message code="salle.list.header.code" /></th>
+			<th><spring:message code="salle.list.header.cout" /></th>
+			<th><spring:message code="salle.list.header.capacite" /></th>
+			<th><spring:message code="salle.list.header.disponibilite" /></th>
 			<th></th>
 		</tr>
-		<c:forEach var="formateur" items="${listeFormateur}">
+		<c:forEach var="salle" items="${listeSalle}">
 			<tr>
-				<td>${formateur.id}</td>
-				<td>${formateur.nom}</td>
-				<td>${formateur.prenom}</td>
-				<td>${formateur.tel}</td>
-				<td>${formateur.adresse}</td>
-				<td><a href="edit?id=${formateur.id}" class="btn btn-info"><spring:message
-							code="formateur.list.edit" /></a></td>
+				<td>${salle.id}</td>
+				<td>${salle.nom}</td>
+				<td>${salle.code}</td>
+				<td>${salle.cout}</td>
+				<td>${salle.capacite}</td>
+				<td>${salle.disponibilite}</td>
+				<td><a href="edit?id=${salle.id}" class="btn btn-info"><spring:message
+							code="salle.list.edit" /></a></td>
 							
 <%-- 				<td><sec:authorize access="hasRole('ROLE_ADMIN')"><a href="delete?id=${formateur.id}" class="btn btn-danger"><spring:message --%>
 <%-- 							code="formateur.list.delete" /></a></sec:authorize></td> --%>

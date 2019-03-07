@@ -69,7 +69,7 @@ public class SalleRestController {
 			salleEnBase.setCode(salle.getCode());
 			salleEnBase.setCout(salle.getCout());
 			salleEnBase.setDisponibilite(salle.getDisponibilite());
-			salleEnBase.setCapacité(salle.getCapacité());
+			salleEnBase.setCapacite(salle.getCapacite());
 			salleEnBase.setModule(salle.getModule());
 			salleEnBase.setNom(salle.getNom());
 			salleRepository.save(salleEnBase);

@@ -8,12 +8,12 @@ import com.Factory.entity.jsonviews.JsonViews;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-@DiscriminatorValue("SALLE")
+@DiscriminatorValue("salle")
 public class Salle extends Materiel {
 
 	
 	@JsonView(JsonViews.Common.class)
-	private int capacité;
+	private int capacite;
 	
 	@JsonView(JsonViews.Common.class)
 	private String nom;
@@ -24,9 +24,9 @@ public class Salle extends Materiel {
 
 	
 	
-	public Salle(int capacité, String nom, Module module) {
+	public Salle(int capacite, String nom, Module module) {
 		super();
-		this.capacité = capacité;
+		this.capacite = capacite;
 		this.nom = nom;
 		this.module = module;
 	}
@@ -43,12 +43,12 @@ public class Salle extends Materiel {
 		this.module = module;
 	}
 
-	public int getCapacité() {
-		return capacité;
+	public int getCapacite() {
+		return capacite;
 	}
 
-	public void setCapacité(int capacité) {
-		this.capacité = capacité;
+	public void setCapacite(int capacite) {
+		this.capacite = capacite;
 	}
 
 	public String getNom() {

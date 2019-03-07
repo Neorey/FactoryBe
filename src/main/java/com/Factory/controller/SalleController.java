@@ -55,9 +55,11 @@ public class SalleController {
 	
 	public String goEdit(Salle salle, Model model) {
 		model.addAttribute("salle", salle);
+		model.addAttribute("disponibilite", salle.getDisponibilite());
 		return "salle/edit";
 	}
 	
+	@GetMapping("/save")
 	public String save(@Valid @ModelAttribute("salle") Salle salle, BindingResult br, Model model) {
 		if(br.hasErrors()) {
 			return goEdit(salle, model);
